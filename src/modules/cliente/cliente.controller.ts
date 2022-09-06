@@ -22,6 +22,11 @@ export class ClienteController {
       return await this.clienteService.findOne(id);
   };
 
+  @Put('update/:id')
+  async update(@Param('id') id: string,@Body() data: ClienteDTO) {
+    return await this.clienteService.update(id, data);
+  };
+
   @Delete('delete/:id')
   async delete(@Param('id') id: string) {
     return await this.clienteService.delete(id);

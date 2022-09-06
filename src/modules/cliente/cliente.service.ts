@@ -30,12 +30,28 @@ export class ClienteService {
             }
         }
 
+        try {
 
-        const cliente = await this.prismaCliente.cliente.create({
-            data,
-        })
+            await this.prismaCliente.cliente.create({
+                data,
+            })
 
-        return cliente;
+            return <ResultsDTO>{
+
+                status: true,
+                message: "Usuário cadastrado com sucesso..."
+
+            }
+            
+        } catch (error) {
+
+            return <ResultsDTO>{
+
+                status: false,
+                message: error
+
+            }
+        }
     }
 
     async findAll() {
@@ -56,8 +72,42 @@ export class ClienteService {
         })
     }
 
+    async update(id, data) {
+
+        try {
+
+            await this.prismaCliente.cliente.update({
+
+                where: {
+
+                    id: id
+
+                },
+                data
+
+            })
+
+            return <ResultsDTO>{
+
+                status: true,
+                message: "Usuário atualizado..."
+
+            }
+
+        } catch (error) {
+
+            return <ResultsDTO>{
+
+                status: false,
+                message: error
+
+            }
+
+        }
+    }
+
     async delete(id) {
-        
+
         const clienteExists = await this.prismaCliente.cliente.findFirst({
 
             where: {
@@ -69,21 +119,33 @@ export class ClienteService {
 
         if (!clienteExists) {
 
-            return <ResultsDTO> {
+            return <ResultsDTO>{
 
                 status: false,
                 message: 'Usuário inesistente!'
 
             };
         };
-        
-        return await this.prismaCliente.cliente.delete({
 
-            where: {
+        try {
 
-                id: id
+            await this.prismaCliente.cliente.delete({
+
+                where: {
+
+                    id: id
+
+                }
+            })
+
+        } catch (error) {
+
+            return <ResultsDTO>{
+
+                status: false,
+                message: error
 
             }
-        })
+        }
     }
 }

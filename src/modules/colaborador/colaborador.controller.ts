@@ -3,7 +3,7 @@ import { ColaboradorService } from './colaborador.service';
 import { ColaboradorDTO } from './dto/colaborador.dto';
 
 
-@Controller('manager')
+@Controller('collaborator')
 export class ColaboradorController {
   constructor(private readonly colaboradorService: ColaboradorService) {};
 

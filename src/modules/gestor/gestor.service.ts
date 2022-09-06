@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/db/PrismaService';
 import { ResultsDTO } from 'src/dto/Results.dto';
-import { ColaboradorDTO } from './dto/colaborador.dto';
+import { GestorDTO } from './dto/gestor.dto';
 
 @Injectable()
-export class ColaboradorService {
+export class GestorService {
     constructor(private prismaCliente: PrismaService) { }
 
-    async create(data: ColaboradorDTO) {
+    async create(data: GestorDTO) {
 
-        const clienteExists = await this.prismaCliente.colaborador.findFirst({
+        const clienteExists = await this.prismaCliente.gestor.findFirst({
 
             where: {
 
@@ -17,7 +17,6 @@ export class ColaboradorService {
 
             },
         });
-
 
         if (clienteExists) {
 
@@ -31,7 +30,7 @@ export class ColaboradorService {
 
         try {
 
-            await this.prismaCliente.colaborador.create({
+            await this.prismaCliente.gestor.create({
                 data,
             });
 
@@ -57,7 +56,7 @@ export class ColaboradorService {
 
         try {
 
-            return await this.prismaCliente.colaborador.findMany();
+            return await this.prismaCliente.gestor.findMany();
 
         } catch (error) {
             
@@ -75,7 +74,7 @@ export class ColaboradorService {
 
         try {
 
-            const result = await this.prismaCliente.colaborador.findUnique({
+            const result = await this.prismaCliente.gestor.findUnique({
 
                 where: {
     
@@ -113,7 +112,7 @@ export class ColaboradorService {
 
         try {
 
-            await this.prismaCliente.colaborador.update({
+            await this.prismaCliente.gestor.update({
 
                 where: {
 
@@ -144,7 +143,7 @@ export class ColaboradorService {
 
     async delete(id) {
 
-        const clienteExists = await this.prismaCliente.colaborador.findFirst({
+        const clienteExists = await this.prismaCliente.gestor.findFirst({
 
             where: {
 
@@ -165,7 +164,7 @@ export class ColaboradorService {
 
         try {
 
-            await this.prismaCliente.colaborador.delete({
+            await this.prismaCliente.gestor.delete({
 
                 where: {
 

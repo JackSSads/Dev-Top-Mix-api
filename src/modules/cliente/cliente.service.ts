@@ -16,7 +16,6 @@ export class ClienteService {
                 email: data.email
 
             },
-
         });
 
 
@@ -27,21 +26,21 @@ export class ClienteService {
                 status: false,
                 message: "E-mail já cadastrado!"
 
-            }
-        }
+            };
+        };
 
         try {
 
             await this.prismaCliente.cliente.create({
                 data,
-            })
+            });
 
             return <ResultsDTO>{
 
                 status: true,
                 message: "Usuário cadastrado com sucesso..."
 
-            }
+            };
             
         } catch (error) {
 
@@ -50,15 +49,15 @@ export class ClienteService {
                 status: false,
                 message: error
 
-            }
-        }
-    }
+            };
+        };
+    };
 
     async findAll() {
 
         try {
 
-            return await this.prismaCliente.cliente.findMany()
+            return await this.prismaCliente.cliente.findMany();
 
         } catch (error) {
             
@@ -67,11 +66,9 @@ export class ClienteService {
                 status: false,
                 message: error
 
-            }
-        }
-        
-
-    }
+            };
+        };
+    };
 
     async findOne(id) {
 
@@ -84,8 +81,9 @@ export class ClienteService {
     
                     id: id
     
-                }
-            })
+                },
+            });
+
         } catch (error) {
 
             return <ResultsDTO> {
@@ -93,11 +91,9 @@ export class ClienteService {
                 status: false,
                 message: error
 
-            }
-            
-        }
-        
-    }
+            };
+        };
+    };
 
     async update(id, data) {
 
@@ -112,14 +108,14 @@ export class ClienteService {
                 },
                 data
 
-            })
+            });
 
             return <ResultsDTO>{
 
                 status: true,
                 message: "Usuário atualizado..."
 
-            }
+            };
 
         } catch (error) {
 
@@ -128,10 +124,9 @@ export class ClienteService {
                 status: false,
                 message: error
 
-            }
-
-        }
-    }
+            };
+        };
+    };
 
     async delete(id) {
 
@@ -162,8 +157,8 @@ export class ClienteService {
 
                     id: id
 
-                }
-            })
+                },
+            });
 
         } catch (error) {
 
@@ -172,7 +167,7 @@ export class ClienteService {
                 status: false,
                 message: error
 
-            }
-        }
-    }
-}
+            };
+        };
+    };
+};

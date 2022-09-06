@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id    String     @id @default(uuid())
+  name  String
+  email String  @unique
+  pass  String
+  @@map("clients")
+}
+
+model Gestor {
+  id    String     @id @default(uuid())
+  name  String
+  email String  @unique
+  pass  String
+  @@map("manager")
+}
+
+model Colaborador {
+  id    String     @id @default(uuid())
+  name  String
+  email String  @unique
+  pass  String
+  @@map("collaborator")
+}

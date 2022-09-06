@@ -43,11 +43,12 @@ export class GestorService {
             
         } catch (error) {
 
-            return <ResultsDTO>{
+            return <ResultsDTO> {
 
                 status: false,
-                message: error
-
+                message:
+                    "Erro de comunicação com o banco de dados: "
+                    + error
             };
         };
     };
@@ -63,8 +64,9 @@ export class GestorService {
             return <ResultsDTO> {
 
                 status: false,
-                message: error
-
+                message:
+                    "Erro de comunicação com o banco de dados: "
+                    + error
             };
         };
     };
@@ -102,8 +104,9 @@ export class GestorService {
             return <ResultsDTO> {
 
                 status: false,
-                message: error
-
+                message:
+                    "Erro de Comunicação com o banco de dados: "
+                    + error
             };
         };
     };
@@ -132,11 +135,12 @@ export class GestorService {
 
         } catch (error) {
 
-            return <ResultsDTO>{
+            return <ResultsDTO> {
 
                 status: false,
-                message: error
-
+                message:
+                    "Erro de Comunicação com o banco de dados: "
+                    + error
             };
         };
     };
@@ -181,11 +185,12 @@ export class GestorService {
             };
         } catch (error) {
 
-            return <ResultsDTO>{
+            return <ResultsDTO> {
 
                 status: false,
-                message: error
-
+                message:
+                    "Erro de Comunicação com o banco de dados: "
+                    + error
             };
         };
     };

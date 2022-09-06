@@ -75,7 +75,7 @@ export class ClienteService {
 
         try {
 
-            return await this.prismaCliente.cliente.findUnique({
+            const result = await this.prismaCliente.cliente.findUnique({
 
                 where: {
     
@@ -83,6 +83,20 @@ export class ClienteService {
     
                 },
             });
+
+            if (result) {
+
+                return result;
+
+            } else {
+
+                return <ResultsDTO> {
+
+                    status: false,
+                    message: "Usuário não existe!"
+    
+                };
+            }
 
         } catch (error) {
 

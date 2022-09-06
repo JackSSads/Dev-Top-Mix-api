@@ -56,20 +56,47 @@ export class ClienteService {
 
     async findAll() {
 
-        return await this.prismaCliente.cliente.findMany()
+        try {
+
+            return await this.prismaCliente.cliente.findMany()
+
+        } catch (error) {
+            
+            return <ResultsDTO> {
+
+                status: false,
+                message: error
+
+            }
+        }
+        
 
     }
 
     async findOne(id) {
 
-        return await this.prismaCliente.cliente.findUnique({
 
-            where: {
+        try {
 
-                id: id
+            return await this.prismaCliente.cliente.findUnique({
+
+                where: {
+    
+                    id: id
+    
+                }
+            })
+        } catch (error) {
+
+            return <ResultsDTO> {
+
+                status: false,
+                message: error
 
             }
-        })
+            
+        }
+        
     }
 
     async update(id, data) {

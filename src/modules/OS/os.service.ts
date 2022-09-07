@@ -11,14 +11,18 @@ export class OsService {
 
         try {
 
-            await this.prismaCliente.oS.create({
+            const result = await this.prismaCliente.oS.create({
                 data,
             })
-
+ 
             return <ResultsDTO>{
 
                 status: true,
-                message: "OS cadastrado com sucesso..."
+                message: "OS cadastrado com sucesso...",
+                id: result.id,
+                client: result.client,
+                description: result.description,
+                collaborator_req: result.collaborator_req,
 
             };
             
@@ -28,8 +32,8 @@ export class OsService {
 
                 status: false,
                 message:
-                    "Erro de Comunicação com o banco de dados: "
-                    + error
+                    "Erro de Comunicação com o banco de dados "
+                    
             };
         };
     };
@@ -47,7 +51,7 @@ export class OsService {
                 status: false,
                 message:
                     "Erro de Comunicação com o banco de dados: "
-                    + error
+
             };
         };
     };
@@ -96,7 +100,7 @@ export class OsService {
 
         try {
 
-            await this.prismaCliente.oS.update({
+            const result = await this.prismaCliente.oS.update({
 
                 where: {
 
@@ -110,7 +114,11 @@ export class OsService {
             return <ResultsDTO>{
 
                 status: true,
-                message: "OS atualizado..."
+                message: "OS atualizado...",
+                id: result.id,
+                client: result.client,
+                description: result.description,
+                collaborator_req: result.collaborator_req,
 
             };
 
@@ -149,7 +157,7 @@ export class OsService {
 
         try {
 
-            await this.prismaCliente.oS.delete({
+            const result = await this.prismaCliente.oS.delete({
 
                 where: {
 
@@ -161,7 +169,11 @@ export class OsService {
             return <ResultsDTO>{
 
                 status: true,
-                message: 'OS deleteado...'
+                message: 'OS deleteado...',
+                id: result.id,
+                client: result.client,
+                description: result.description,
+                collaborator_req: result.collaborator_req,
 
             };
         } catch (error) {

@@ -11,16 +11,14 @@ datasource db {
 }
 
 model Cliente {
-  id    String @id @default(uuid())
-  name  String
-  email String @unique
-  pass  String
+  id   String @id @unique @default(uuid())
+  name String
 
   @@map("clients")
 }
 
 model Gestor {
-  id    String @id @default(uuid())
+  id    String @id @unique @default(uuid())
   name  String
   email String @unique
   pass  String
@@ -29,7 +27,7 @@ model Gestor {
 }
 
 model Colaborador {
-  id    String @id @default(uuid())
+  id    String @id @unique @default(uuid())
   name  String
   email String @unique
   pass  String
@@ -38,10 +36,12 @@ model Colaborador {
 }
 
 model OS {
-  id               String @id @default(uuid())
+  id               String   @id @unique @default(uuid())
   date             String
+  client           String
   description      String
   collaborator_req String
+  status           Boolean
 
   @@map("os")
 }

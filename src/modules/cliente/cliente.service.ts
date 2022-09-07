@@ -8,37 +8,19 @@ export class ClienteService {
     constructor(private prismaCliente: PrismaService) { }
 
     async create(data: ClienteDTO) {
-
-        const clienteExists = await this.prismaCliente.cliente.findFirst({
-
-            where: {
-
-                email: data.email
-
-            },
-        });
-
-
-        if (clienteExists) {
-
-            return <ResultsDTO>{
-
-                status: false,
-                message: "E-mail já cadastrado!"
-
-            };
-        };
-
+        
         try {
 
-            await this.prismaCliente.cliente.create({
+            const user = await this.prismaCliente.cliente.create({
                 data,
             });
 
             return <ResultsDTO>{
 
                 status: true,
-                message: "Usuário cadastrado com sucesso..."
+                message: "Usuário cadastrado com sucesso...",
+                id: user.id,
+                name: user.name
 
             };
             
@@ -116,7 +98,7 @@ export class ClienteService {
 
         try {
 
-            await this.prismaCliente.cliente.update({
+            const result = await this.prismaCliente.cliente.update({
 
                 where: {
 
@@ -127,10 +109,14 @@ export class ClienteService {
 
             });
 
+            console.log(result)
+
             return <ResultsDTO>{
 
                 status: true,
-                message: "Usuário atualizado..."
+                message: "Usuário atualizado...",
+                id: result.id,
+                name: result.name
 
             };
 
@@ -169,7 +155,7 @@ export class ClienteService {
 
         try {
 
-            await this.prismaCliente.cliente.delete({
+            const result = await this.prismaCliente.cliente.delete({
 
                 where: {
 
@@ -177,6 +163,15 @@ export class ClienteService {
 
                 },
             });
+
+            return <ResultsDTO>{
+
+                status: true,
+                message: "Usuário deleteado com sucesso...",
+                id: result.id,
+                name: result.name
+
+            };
 
         } catch (error) {
 

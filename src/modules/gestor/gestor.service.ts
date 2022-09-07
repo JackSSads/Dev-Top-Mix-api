@@ -30,14 +30,17 @@ export class GestorService {
 
         try {
 
-            await this.prismaCliente.gestor.create({
+            const result = await this.prismaCliente.gestor.create({
                 data,
             });
 
             return <ResultsDTO>{
 
                 status: true,
-                message: "Usuário cadastrado com sucesso..."
+                message: "Usuário cadastrado com sucesso...",
+                id: result.id,
+                name: result.name,
+                email: result.email
 
             };
             
@@ -115,7 +118,7 @@ export class GestorService {
 
         try {
 
-            await this.prismaCliente.gestor.update({
+            const result = await this.prismaCliente.gestor.update({
 
                 where: {
 
@@ -129,7 +132,10 @@ export class GestorService {
             return <ResultsDTO>{
 
                 status: true,
-                message: "Usuário atualizado..."
+                message: "Usuário atualizado...",
+                id: result.id,
+                name: result.name,
+                email: result.email
 
             };
 
@@ -168,7 +174,7 @@ export class GestorService {
 
         try {
 
-            await this.prismaCliente.gestor.delete({
+            const result = await this.prismaCliente.gestor.delete({
 
                 where: {
 
@@ -180,7 +186,10 @@ export class GestorService {
             return <ResultsDTO>{
 
                 status: true,
-                message: 'Usuário deleteado...'
+                message: 'Usuário deleteado...',
+                id: result.id,
+                name: result.name,
+                email: result.email
 
             };
         } catch (error) {

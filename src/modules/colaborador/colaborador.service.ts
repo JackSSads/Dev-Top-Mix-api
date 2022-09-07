@@ -31,14 +31,17 @@ export class ColaboradorService {
 
         try {
 
-            await this.prismaCliente.colaborador.create({
+            const result = await this.prismaCliente.colaborador.create({
                 data,
             });
 
             return <ResultsDTO>{
 
                 status: true,
-                message: "Usuário cadastrado com sucesso..."
+                message: "Usuário cadastrado com sucesso...",
+                id: result.id,
+                name: result.name,
+                email: result.email
 
             };
             
@@ -47,9 +50,8 @@ export class ColaboradorService {
             return <ResultsDTO> {
 
                 status: false,
-                message:
-                    "Erro de Comunicação com o banco de dados: "
-                    + error
+                message: "Erro de Comunicação com o banco de dados! "
+                    
             };
         };
     };
@@ -67,12 +69,12 @@ export class ColaboradorService {
                 status: false,
                 message:
                     "Erro de Comunicação com o banco de dados: "
-                    + error
+                  
             };
         };
     };
 
-    async findOne(id) {
+    async findOne(email) {
 
 
         try {
@@ -81,7 +83,7 @@ export class ColaboradorService {
 
                 where: {
     
-                    id: id
+                    email: email
     
                 },
             });
@@ -107,20 +109,20 @@ export class ColaboradorService {
                 status: false,
                 message:
                     "Erro de Comunicação com o banco de dados: "
-                    + error
+                    
             };
         };
     };
 
-    async update(id, data) {
+    async update(email, data) {
 
         try {
 
-            await this.prismaCliente.colaborador.update({
+            const result = await this.prismaCliente.colaborador.update({
 
                 where: {
 
-                    id: id
+                    email: email
 
                 },
                 data
@@ -130,7 +132,10 @@ export class ColaboradorService {
             return <ResultsDTO>{
 
                 status: true,
-                message: "Usuário atualizado..."
+                message: "Usuário atualizado...",
+                id: result.id,
+                name: result.name,
+                email: result.email
 
             };
 
@@ -141,18 +146,18 @@ export class ColaboradorService {
                 status: false,
                 message:
                     "Erro de Comunicação com o banco de dados: "
-                    + error
+
             };
         };
     };
 
-    async delete(id) {
+    async delete(email) {
 
         const clienteExists = await this.prismaCliente.colaborador.findFirst({
 
             where: {
 
-                id: id,
+                email: email,
 
             },
         });
@@ -169,11 +174,11 @@ export class ColaboradorService {
 
         try {
 
-            await this.prismaCliente.colaborador.delete({
+            const result = await this.prismaCliente.colaborador.delete({
 
                 where: {
 
-                    id: id
+                    email: email
 
                 },
             });
@@ -181,7 +186,10 @@ export class ColaboradorService {
             return <ResultsDTO>{
 
                 status: true,
-                message: 'Usuário deleteado...'
+                message: 'Usuário deleteado...',
+                id: result.id,
+                name: result.name,
+                email: result.email
 
             };
         } catch (error) {

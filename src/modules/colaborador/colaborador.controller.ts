@@ -17,18 +17,18 @@ export class ColaboradorController {
       return await this.colaboradorService.findAll();
   };
 
-  @Get('findOne/:id')
-  async findOne(@Param('id') id: string) {
-      return await this.colaboradorService.findOne(id);
+  @Get('findOne/:email')
+  async findOne(@Param('email') email: string) {
+      return await this.colaboradorService.findOne(email);
   };
 
-  @Put('update/:id')
-  async update(@Param('id') id: string,@Body() data: ColaboradorDTO) {
-    return await this.colaboradorService.update(id, data);
+  @Put('update/:email')
+  async update(@Param('email') email: string,@Body() data: ColaboradorDTO) {
+    return await this.colaboradorService.update(email, data);
   };
 
-  @Delete('delete/:id')
-  async delete(@Param('id') id: string) {
-    return await this.colaboradorService.delete(id);
+  @Delete('delete/:email')
+  async delete(@Param('email') email: string) {
+    return await this.colaboradorService.delete(email);
   };
 };

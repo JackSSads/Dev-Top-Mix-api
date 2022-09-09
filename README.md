@@ -28,8 +28,57 @@ NestJs, Prisma ORM, MySQL
 • <a href="https://github.com/JackSSads">Jackson Souza</a>
 
 # Endpoit's
-<img align="center" alt="Imagem dos endpoit's" height="268,8" width="478,1" src="">
-<img align="center" alt="Imagem dos endpoit's" height="268,8" width="478,1" src="">
-<img align="center" alt="Imagem dos endpoit's" height="268,8" width="478,1" src="">
-<img align="center" alt="Imagem dos endpoit's" height="268,8" width="478,1" src="">
-<img align="center" alt="Imagem dos endpoit's" height="268,8" width="478,1" src="">
+
+<p>Cliente</p>
+<p>POST = http://localhost:5000/client/create</p>
+<p>GET = http://localhost:5000/client/findOne/</p>
+<p>GET = http://localhost:5000/client/FindAll</p>
+<p>PUT = http://localhost:5000/client/update/</p>
+<p>DELETE = http://localhost:5000/client/delete/</p>
+
+##
+
+<p>Colaborador</p>
+<p>POST = http://localhost:5000/colaborator/create</p>
+<p>GET = http://localhost:5000/colaborator/findOne/</p>
+<p>GET = http://localhost:5000/colaborator/FindAll</p>
+<p>PUT = http://localhost:5000/colaborator/update/</p>
+<p>DELETE = http://localhost:5000/colaborator/delete/</p>
+
+##
+
+<p>Gestor</p>
+<p>POST = http://localhost:5000/manager/create</p>
+<p>GET = http://localhost:5000/manager/findOne/</p>
+<p>GET = http://localhost:5000/manager/FindAll</p>
+<p>PUT = http://localhost:5000/manager/update/</p>
+<p>DELETE = http://localhost:5000/manager/delete/</p>
+
+##
+
+<p>Ordem de serviço</p>
+<p>POST = http://localhost:5000/os/create</p>
+<p>GET = http://localhost:5000/os/findOne/</p>
+<p>GET = http://localhost:5000/os/FindAll</p>
+<p>PUT = http://localhost:5000/os/update/</p>
+<p>DELETE = http://localhost:5000/os/delete/</p>
+
+##
+
+<img align="center" alt="Imagem dos endpoit's" height="768" width="1366" src="https://github.com/JackSSads/Dev-Top-Mix-api/blob/main/img-endpoi/create.jpg">
+
+##
+
+<img align="center" alt="Imagem dos endpoit's" height="768" width="1366" src="https://github.com/JackSSads/Dev-Top-Mix-api/blob/main/img-endpoi/delete.jpg">
+
+##
+
+<img align="center" alt="Imagem dos endpoit's" height="768" width="1366" src="https://github.com/JackSSads/Dev-Top-Mix-api/blob/main/img-endpoi/read-all.jpg">
+
+##
+
+<img align="center" alt="Imagem dos endpoit's" height="768" width="1366" src="https://github.com/JackSSads/Dev-Top-Mix-api/blob/main/img-endpoi/read-one.jpg">
+
+##
+
+<img align="center" alt="Imagem dos endpoit's" height="768" width="1366" src="https://github.com/JackSSads/Dev-Top-Mix-api/blob/main/img-endpoi/update.jpg">

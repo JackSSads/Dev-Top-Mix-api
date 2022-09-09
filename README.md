@@ -26,3 +26,10 @@ NestJs, Prisma ORM, MySQL
 
 ## Colaboradores
 • <a href="https://github.com/JackSSads">Jackson Souza</a>
+
+# Endpoit's
+<img align="center" alt="Imagem dos endpoit's" height="268,8" width="478,1" src="">
+<img align="center" alt="Imagem dos endpoit's" height="268,8" width="478,1" src="">
+<img align="center" alt="Imagem dos endpoit's" height="268,8" width="478,1" src="">
+<img align="center" alt="Imagem dos endpoit's" height="268,8" width="478,1" src="">
+<img align="center" alt="Imagem dos endpoit's" height="268,8" width="478,1" src="">

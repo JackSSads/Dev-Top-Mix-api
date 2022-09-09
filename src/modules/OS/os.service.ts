@@ -1,26 +1,28 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/db/PrismaService';
 import { ResultsDTO } from 'src/dto/Results.dto';
-import { ClienteDTO } from './dto/cliente.dto';
+import { OsDTO } from './dto/os.dto';
 
 @Injectable()
-export class ClienteService {
+export class OsService {
     constructor(private prismaCliente: PrismaService) { }
 
-    async create(data: ClienteDTO) {
-        
+    async create(data: OsDTO) {
+
         try {
 
-            const user = await this.prismaCliente.cliente.create({
+            const result = await this.prismaCliente.oS.create({
                 data,
-            });
-
+            })
+ 
             return <ResultsDTO>{
 
                 status: true,
-                message: "Usuário cadastrado com sucesso...",
-                id: user.id,
-                name: user.name
+                message: "OS cadastrado com sucesso...",
+                id: result.id,
+                client: result.client,
+                description: result.description,
+                collaborator_req: result.collaborator_req,
 
             };
             
@@ -30,8 +32,8 @@ export class ClienteService {
 
                 status: false,
                 message:
-                    "Erro de Comunicação com o banco de dados: "
-                    + error
+                    "Erro de Comunicação com o banco de dados "
+                    
             };
         };
     };
@@ -40,7 +42,7 @@ export class ClienteService {
 
         try {
 
-            return await this.prismaCliente.cliente.findMany();
+            return await this.prismaCliente.oS.findMany();
 
         } catch (error) {
             
@@ -49,7 +51,7 @@ export class ClienteService {
                 status: false,
                 message:
                     "Erro de Comunicação com o banco de dados: "
-                    + error
+
             };
         };
     };
@@ -59,7 +61,7 @@ export class ClienteService {
 
         try {
 
-            const result = await this.prismaCliente.cliente.findUnique({
+            const result = await this.prismaCliente.oS.findUnique({
 
                 where: {
     
@@ -77,7 +79,7 @@ export class ClienteService {
                 return <ResultsDTO> {
 
                     status: false,
-                    message: "Usuário não existe!"
+                    message: "Esta OS não existe!"
     
                 };
             }
@@ -98,7 +100,7 @@ export class ClienteService {
 
         try {
 
-            const result = await this.prismaCliente.cliente.update({
+            const result = await this.prismaCliente.oS.update({
 
                 where: {
 
@@ -109,14 +111,14 @@ export class ClienteService {
 
             });
 
-            console.log(result)
-
             return <ResultsDTO>{
 
                 status: true,
-                message: "Usuário atualizado...",
+                message: "OS atualizado...",
                 id: result.id,
-                name: result.name
+                client: result.client,
+                description: result.description,
+                collaborator_req: result.collaborator_req,
 
             };
 
@@ -134,7 +136,7 @@ export class ClienteService {
 
     async delete(id) {
 
-        const clienteExists = await this.prismaCliente.cliente.findFirst({
+        const osExists = await this.prismaCliente.oS.findFirst({
 
             where: {
 
@@ -143,19 +145,19 @@ export class ClienteService {
             },
         });
 
-        if (!clienteExists) {
+        if (!osExists) {
 
             return <ResultsDTO>{
 
                 status: false,
-                message: 'Usuário inesistente!'
+                message: 'OS inesistente!'
 
             };
         };
 
         try {
 
-            const result = await this.prismaCliente.cliente.delete({
+            const result = await this.prismaCliente.oS.delete({
 
                 where: {
 
@@ -167,12 +169,13 @@ export class ClienteService {
             return <ResultsDTO>{
 
                 status: true,
-                message: "Usuário deleteado com sucesso...",
+                message: 'OS deleteado...',
                 id: result.id,
-                name: result.name
+                client: result.client,
+                description: result.description,
+                collaborator_req: result.collaborator_req,
 
             };
-
         } catch (error) {
 
             return <ResultsDTO> {

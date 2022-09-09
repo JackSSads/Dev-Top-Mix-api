@@ -1,17 +1,36 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/db/PrismaService';
 import { ResultsDTO } from 'src/dto/Results.dto';
-import { ClienteDTO } from './dto/cliente.dto';
+import { GestorDTO } from './dto/gestor.dto';
 
 @Injectable()
-export class ClienteService {
+export class GestorService {
     constructor(private prismaCliente: PrismaService) { }
 
-    async create(data: ClienteDTO) {
-        
+    async create(data: GestorDTO) {
+
+        const clienteExists = await this.prismaCliente.gestor.findFirst({
+
+            where: {
+
+                email: data.email
+
+            },
+        });
+
+        if (clienteExists) {
+
+            return <ResultsDTO>{
+
+                status: false,
+                message: "E-mail já cadastrado!"
+
+            };
+        };
+
         try {
 
-            const user = await this.prismaCliente.cliente.create({
+            const result = await this.prismaCliente.gestor.create({
                 data,
             });
 
@@ -19,8 +38,9 @@ export class ClienteService {
 
                 status: true,
                 message: "Usuário cadastrado com sucesso...",
-                id: user.id,
-                name: user.name
+                id: result.id,
+                name: result.name,
+                email: result.email
 
             };
             
@@ -30,7 +50,7 @@ export class ClienteService {
 
                 status: false,
                 message:
-                    "Erro de Comunicação com o banco de dados: "
+                    "Erro de comunicação com o banco de dados: "
                     + error
             };
         };
@@ -40,7 +60,7 @@ export class ClienteService {
 
         try {
 
-            return await this.prismaCliente.cliente.findMany();
+            return await this.prismaCliente.gestor.findMany();
 
         } catch (error) {
             
@@ -48,7 +68,7 @@ export class ClienteService {
 
                 status: false,
                 message:
-                    "Erro de Comunicação com o banco de dados: "
+                    "Erro de comunicação com o banco de dados: "
                     + error
             };
         };
@@ -59,7 +79,7 @@ export class ClienteService {
 
         try {
 
-            const result = await this.prismaCliente.cliente.findUnique({
+            const result = await this.prismaCliente.gestor.findUnique({
 
                 where: {
     
@@ -98,7 +118,7 @@ export class ClienteService {
 
         try {
 
-            const result = await this.prismaCliente.cliente.update({
+            const result = await this.prismaCliente.gestor.update({
 
                 where: {
 
@@ -109,14 +129,13 @@ export class ClienteService {
 
             });
 
-            console.log(result)
-
             return <ResultsDTO>{
 
                 status: true,
                 message: "Usuário atualizado...",
                 id: result.id,
-                name: result.name
+                name: result.name,
+                email: result.email
 
             };
 
@@ -134,7 +153,7 @@ export class ClienteService {
 
     async delete(id) {
 
-        const clienteExists = await this.prismaCliente.cliente.findFirst({
+        const clienteExists = await this.prismaCliente.gestor.findFirst({
 
             where: {
 
@@ -155,7 +174,7 @@ export class ClienteService {
 
         try {
 
-            const result = await this.prismaCliente.cliente.delete({
+            const result = await this.prismaCliente.gestor.delete({
 
                 where: {
 
@@ -167,12 +186,12 @@ export class ClienteService {
             return <ResultsDTO>{
 
                 status: true,
-                message: "Usuário deleteado com sucesso...",
+                message: 'Usuário deleteado...',
                 id: result.id,
-                name: result.name
+                name: result.name,
+                email: result.email
 
             };
-
         } catch (error) {
 
             return <ResultsDTO> {

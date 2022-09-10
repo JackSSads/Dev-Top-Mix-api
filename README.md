@@ -65,6 +65,10 @@ NestJs, Prisma ORM, MySQL
 
 ##
 
+[Endpoint remoto]https://4b08-177-73-115-239.ngrok.io/
+
+##
+
 <img align="center" alt="Imagem dos endpoit's" height="768" width="1366" src="https://github.com/JackSSads/Dev-Top-Mix-api/blob/main/img-endpoi/create.jpg">
 
 ##

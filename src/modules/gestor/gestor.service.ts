@@ -74,7 +74,7 @@ export class GestorService {
         };
     };
 
-    async findOne(id) {
+    async findOne(email) {
 
 
         try {
@@ -83,7 +83,7 @@ export class GestorService {
 
                 where: {
     
-                    id: id
+                    email: email
     
                 },
             });
@@ -114,7 +114,7 @@ export class GestorService {
         };
     };
 
-    async update(id, data) {
+    async update(email, data) {
 
         try {
 
@@ -122,7 +122,7 @@ export class GestorService {
 
                 where: {
 
-                    id: id
+                    email: email
 
                 },
                 data
@@ -151,13 +151,13 @@ export class GestorService {
         };
     };
 
-    async delete(id) {
+    async delete(email) {
 
         const clienteExists = await this.prismaCliente.gestor.findFirst({
 
             where: {
 
-                id: id,
+                email: email,
 
             },
         });
@@ -178,7 +178,7 @@ export class GestorService {
 
                 where: {
 
-                    id: id
+                    email: email
 
                 },
             });

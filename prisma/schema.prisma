@@ -36,7 +36,7 @@ model Colaborador {
 }
 
 model OS {
-  id               String   @id @unique @default(uuid())
+  id               String  @id @unique @default(uuid())
   date             String
   client           String
   description      String

@@ -109,8 +109,6 @@ export class ClienteService {
 
             });
 
-            console.log(result)
-
             return <ResultsDTO>{
 
                 status: true,

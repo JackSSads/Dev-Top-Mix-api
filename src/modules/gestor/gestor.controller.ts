@@ -7,28 +7,28 @@ import { GestorDTO } from './dto/gestor.dto';
 export class GestorController {
   constructor(private readonly gestorService: GestorService) {};
 
-  @Post('create')
+  @Post()
   async create(@Body() data: GestorDTO) {
     return await this.gestorService.create(data);
   };
 
-  @Get('findAll')
+  @Get()
   async findAll() {
       return await this.gestorService.findAll();
   };
 
-  @Get('findOne/:id')
-  async findOne(@Param('id') id: string) {
-      return await this.gestorService.findOne(id);
+  @Get(':email')
+  async findOne(@Param('email') email: string) {
+      return await this.gestorService.findOne(email);
   };
 
-  @Put('update/:id')
-  async update(@Param('id') id: string,@Body() data: GestorDTO) {
-    return await this.gestorService.update(id, data);
+  @Put(':email')
+  async update(@Param('email') email: string,@Body() data: GestorDTO) {
+    return await this.gestorService.update(email, data);
   };
 
-  @Delete('delete/:id')
-  async delete(@Param('id') id: string) {
-    return await this.gestorService.delete(id);
+  @Delete(':email')
+  async delete(@Param('email') email: string) {
+    return await this.gestorService.delete(email);
   };
 };

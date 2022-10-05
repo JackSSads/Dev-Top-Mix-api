@@ -7,27 +7,27 @@ import { ClienteDTO } from './dto/cliente.dto';
 export class ClienteController {
   constructor(private readonly clienteService: ClienteService) {};
 
-  @Post('create')
+  @Post()
   async create(@Body() data: ClienteDTO) {
     return await this.clienteService.create(data);
   };
 
-  @Get('findAll')
+  @Get()
   async findAll() {
       return await this.clienteService.findAll();
   };
 
-  @Get('findOne/:id')
+  @Get('/:id')
   async findOne(@Param('id') id: string) {
       return await this.clienteService.findOne(id);
   };
 
-  @Put('update/:id')
+  @Put('/:id')
   async update(@Param('id') id: string,@Body() data: ClienteDTO) {
     return await this.clienteService.update(id, data);
   };
 
-  @Delete('delete/:id')
+  @Delete('/:id')
   async delete(@Param('id') id: string) {
     return await this.clienteService.delete(id);
   };

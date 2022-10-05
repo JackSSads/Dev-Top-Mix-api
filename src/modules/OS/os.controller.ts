@@ -7,27 +7,27 @@ import { OsDTO } from './dto/os.dto';
 export class OsController {
   constructor(private readonly osService: OsService) {};
 
-  @Post('create')
+  @Post()
   async create(@Body() data: OsDTO) {
     return await this.osService.create(data);
   };
 
-  @Get('findAll')
+  @Get()
   async findAll() {
       return await this.osService.findAll();
   };
 
-  @Get('findOne/:id')
+  @Get(':id')
   async findOne(@Param('id') id: string) {
       return await this.osService.findOne(id);
   };
 
-  @Put('update/:id')
+  @Put(':id')
   async update(@Param('id') id: string,@Body() data: OsDTO) {
     return await this.osService.update(id, data);
   };
 
-  @Delete('delete/:id')
+  @Delete(':id')
   async delete(@Param('id') id: string) {
     return await this.osService.delete(id);
   };

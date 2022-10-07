@@ -3,7 +3,7 @@ import { ClienteService } from './cliente.service';
 import { ClienteDTO } from './dto/cliente.dto';
 
 
-@Controller('client')
+@Controller()
 export class ClienteController {
   constructor(private readonly clienteService: ClienteService) {};
 
